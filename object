@@ -1,0 +1,64 @@
+let scores = {
+  '생활속의회계': 'C',
+  '논리적글쓰기': 'B',
+  '독일문화의이해': 'B+',
+  '기초수학': 'D+',
+  '영어회화': 'C+',
+  '인지발달심리학': 'A+',
+};
+
+let requiredClasses = ['영어회화', '기초수학', '공학수학', '컴퓨터과학개론'];
+
+const getExamResult = (scores, requiredClasses) => {
+  const result = {}
+  
+  for (let key in scores) {
+    let value = scores[key]
+  
+    // 다시 시작
+    if (value === 'A+') {
+      value = 4.5;
+    }
+    if (value === 'A') {
+      value = 4;
+    }
+    if (value === 'B+') {
+      value = 3.5;
+    }
+    if (value === 'B') {
+      value = 3;
+    }
+    if (value === 'C+') {
+      value = 2.5;
+    }
+    if (value === 'C') {
+      value = 2;
+    }
+    if (value === 'D+') {
+      value = 1.5;
+    }
+    if (value === 'D') {
+      value = 1;
+    }
+    if (value === 'F') {
+      value = 0;
+    }
+    
+    
+    result[key] = value;
+  }
+  
+  // 없는 과목 넣는 for 함수
+  for (let i in requiredClasses) {
+    let newClassKeys = requiredClasses[i];
+      
+    console.log(i)
+    if (!result[newClassKeys]) {
+        result[newClassKeys]=0;
+    }
+  }
+
+  return result
+}
+
+getExamResult(scores, requiredClasses)
